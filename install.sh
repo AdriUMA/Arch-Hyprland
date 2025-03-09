@@ -278,6 +278,8 @@ if [ "$sddm_theme" == "Y" ]; then
     execute_script "sddm_theme.sh"
 fi
 
+execute_script "xdg_folders.sh"
+
 execute_script "xdph.sh"
 
 execute_script "zsh.sh"
