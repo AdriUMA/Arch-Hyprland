@@ -1,6 +1,6 @@
 # Arch Linux
 
-## Operating System Installation
+## 🤖 Operating System Installation
 
 > [!IMPORTANT]
 > I recommend using the [official installation guide](https://wiki.archlinux.org/title/Installation_guide). This is a simplified summary adapted to my needs. It may not take into account hardware different from the one I have on my devices.
@@ -37,7 +37,7 @@ timedatectl set-ntp true
 timedatectl show
 ```
 
-### Partitions and Formats
+### 🦿 Partitions and Formats
 
 We will check if the hardware's boot mode is EFI or BIOS for the installation of the operating system.
 
@@ -131,7 +131,7 @@ Create the "EFI System" partition
 mkfs.fat -F 32 /dev/sdXY
 ```
 
-### Mounting and Installation
+### 🦾 Mounting and Installation
 
 We will mount the partitions to the appropriate paths so that the pacstrap script installs correctly
 
@@ -181,7 +181,7 @@ genfstab /mnt >> /mnt/etc/fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-### Configuration
+### ⚙️ Configuration
 
 Access the newly installed operating system and begin configuring.
 
@@ -232,7 +232,7 @@ pacman -S networkmanager
 systemctl enable NetworkManager
 ```
 
-### GRUB
+### 💻 GRUB
 
 **EFI**
 
@@ -268,7 +268,7 @@ grub-install /dev/sdX
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-### Users
+### 👤 Users
 
 Create users, set passwords, and configure
 
@@ -292,7 +292,7 @@ Configure `sudo` by uncommenting the line `# %wheel ALL=(ALL:ALL) ALL` and chang
 nano /etc/sudoers
 ```
 
-### Finish installation
+### 💯 Finish installation
 
 Exit the operating system and return to the live environment
 
@@ -307,7 +307,7 @@ umount -R /mnt
 shutdown now
 ```
 
-## Extra: EFI Windows dual boot
+## ✨ Extra: EFI Windows dual boot ✨
 
 Once you turn off the system, remove the bootable USB, configure the boot order, and enter Arch.
 
@@ -333,30 +333,79 @@ Generate the `grub` configuration
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-If the output does not show something like `Found Windows Boot Manager on /dev/...`, this step has failed.
+❗If the output does not show something like `Found Windows Boot Manager on /dev/...`, this step has failed.
 
-### Alternative using fuse3 (easy)
+## ⚠️ If everything went well but GRUB does not appear in the BIOS boot menu ⚠️
 
-If `os-prober` doesn't give you the mentioned output, try using fuse3
+### 1️⃣ First: **Clean `/boot` and mount**
+
+🅰️ **IF YOU HAVE `/boot` ON A SEPARATE PARTITION**  
+
+For example, if you have:
+
+- `/` on /dev/sda1  
+- `/home` on /dev/sda2  
+- swap on /dev/sda3  
+- `/boot` on /dev/sda4  
+
+Mount the partitions except for `boot`:
 
 ```sh
-sudo pacman -Syy
-sudo pacman -S fuse3
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+mount /dev/sda1 /mnt
+mount /dev/sda2 /mnt/home
+swapon /dev/sda3
 ```
 
-If the output does not show something like `Found Windows Boot Manager on /dev/...`, this step has failed.
-
-### Alternative mounting Windows11 EFI
-
-You can try this alternative with either `os-prober` or `fuse3`
+Format `/boot`, mount it, and regenerate fstab:
 
 ```sh
-sudo pacman -Syy
-sudo mkdir /mnt/win11
-sudo mount /dev/sdXY /mnt/win11
-sudo grub-mkconfig -o /boot/grub/grub.cfg
-sudo umount /mnt/win11
+mkfs.fat -F 32 /dev/sda4
+mount /dev/sda4 /mnt/boot
+genfstab -U > /mnt/etc/fstab
 ```
 
-If the output does not show something like `Found Windows Boot Manager on /dev/...`, this step has failed.
+🅱️ **IF YOU DON'T HAVE `/boot` ON A SEPARATE PARTITION**  
+
+For example, if you have:
+
+- `/` on /dev/sda1  
+- swap on /dev/sda3  
+
+```sh
+mount /dev/sda1 /mnt
+swapon /dev/sda3
+```
+
+Then, remove the contents of `/boot`:
+
+```sh
+rm -rf /mnt/boot/*
+```
+
+### 2️⃣ Second: Regenerate files in `/boot` and install GRUB  
+
+Enter the system and reinstall `linux` to regenerate files in `/boot`:
+
+```sh
+arch-root /mnt
+pacman -Syy
+pacman -S linux
+mkinitcpio -P
+```
+
+Install GRUB with an additional flag:
+
+> If you want to detect other operating systems: install `os-prober` and uncomment the line in `/etc/default/grub` at the end of the document so that it looks like this:  
+> `GRUB_DISABLE_OS_PROBER=false`
+
+```sh
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --removable
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+### 3️⃣ Third: Restart  
+
+```sh
+umount -R /mnt
+shutdown now
+```
