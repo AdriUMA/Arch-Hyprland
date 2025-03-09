@@ -3,9 +3,6 @@
 > [!IMPORTANT]
 > This is my modified, summarized, and hardware-adapted version of [`Jakoo's repository`](https://github.com/JaKooLit/Arch-Hyprland). The README has been modified, as well as the installation scripts—I recommend reading it. I am not responsible for any malfunctions it may have.
 
-> [!NOTE]
-> My own [ArchLinux install guide](https://github.com/AdriUMA/Arch-Hyprland/README.arch.md)
-
 ### 🪧🪧🪧 ANNOUNCEMENT 🪧🪧🪧
 
 - This Repo does not contain Hyprland Dots or configs! Dotfiles can be checked [`here`](https://github.com/AdriUMA/dotfiles) . During installation, if you opt to copy pre-configured dots, it will be downloaded from that centralized repo.
@@ -16,7 +13,7 @@
 
 #### 🆕 Prerequisites
 
-- This install script is intended for at least Server type / Minimal Arch Linux installed.
+- This install script is intended for at least Server type / [Minimal Arch Linux](https://github.com/AdriUMA/Arch-Hyprland/README.arch.md) installed.
 
 > [!NOTE]
 > 🔘 Pipewire and Pipewire audio
