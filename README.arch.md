@@ -2,13 +2,13 @@
 
 ## Operating System Installation
 
-> [IMPORTANT]
+> [!IMPORTANT]
 > I recommend using the [official installation guide](https://wiki.archlinux.org/title/Installation_guide). This is a simplified summary adapted to my needs. It may not take into account hardware different from the one I have on my devices.
 
-> [WARNING]
+> [!WARNING]
 > If for any reason SecureBoot needs to be enabled after installing Arch, I recommend deleting all BIOS keys before starting.
 
-> [CAUTION]
+> [!CAUTION]
 > Install Windows before Arch for dual boot.
 > Dual boot installation will fail if you have Windows 11 with BitLocker enabled.
 
@@ -65,7 +65,7 @@ Create partitions for the operating system or root `/`, for users `/home`, and f
 
 **EFI (with or without Windows)**
 
-> [IMPORTANT] If you have another Linux installed, you have multiple options if you want to keep it. However, for the sake of simplicity, this guide does not consider that case.
+> [!IMPORTANT] If you have another Linux installed, you have multiple options if you want to keep it. However, for the sake of simplicity, this guide does not consider that case.
 
 | Path     | Type             | Suggested Size |
 | -------- | ---------------- | -------------- |
@@ -76,13 +76,13 @@ Create partitions for the operating system or root `/`, for users `/home`, and f
 
 Vemos los nuevos `/dev/sdXY` que se nos han creado
 
-> [INFO]
+> [!NOTE]
 > root `/` and `/home` can be on the same partition, but it is useful to separate them for future reinstalls to keep the system separate from data.
 > The `swap` partition is not mandatory, but it is recommended.
 
 **BIOS/MBR same disk with Windows**
 
-> [WARNING] On BIOS/MBR systems, only 4 primary volumes can be created. Since Windows occupies 3, we cannot have swap or separate home from root.
+> [!WARNING] On BIOS/MBR systems, only 4 primary volumes can be created. Since Windows occupies 3, we cannot have swap or separate home from root.
 
 | Path | Bootable | Type  | Suggested Size |
 | ---- | -------- | ----- | -------------- |
@@ -122,7 +122,7 @@ mkswap /dev/sdXY
 swapon /dev/sdXY
 ```
 
-> [CAUTION]
+> [!CAUTION]
 > Remember that this guide assumes the EFI partition is new for this installation.
 
 Create the "EFI System" partition
@@ -236,7 +236,7 @@ systemctl enable NetworkManager
 
 **EFI**
 
-> [IMPORTANT]  
+> [!IMPORTANT]  
 > At the end of the README, I explain how to set up dual-boot if you have Windows installed on another partition.
 
 ```sh
@@ -318,7 +318,7 @@ sudo pacman -Syy
 sudo pacman -S os-prober
 ```
 
-> [INFO]  
+> [!NOTE]  
 > The line "GRUB_DISABLE_OS_PROBER=false" is at the end of the document.
 
 Now configure `grub` by uncommenting the line `#GRUB_DISABLE_OS_PROBER=false` and changing it to `GRUB_DISABLE_OS_PROBER=false`

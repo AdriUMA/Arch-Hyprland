@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > This is my modified, summarized, and hardware-adapted version of [`Jakoo's repository`](https://github.com/JaKooLit/Arch-Hyprland). The README has been modified, as well as the installation scripts—I recommend reading it. I am not responsible for any malfunctions it may have.
 
-> [!INFO]
+> [!NOTE]
 > My own [ArchLinux install guide](https://github.com/AdriUMA/Arch-Hyprland/README.arch.md)
 
 ### 🪧🪧🪧 ANNOUNCEMENT 🪧🪧🪧
