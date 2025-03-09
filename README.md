@@ -8,7 +8,7 @@
 
 ### 🪧🪧🪧 ANNOUNCEMENT 🪧🪧🪧
 
-- This Repo does not contain Hyprland Dots or configs! Dotfiles can be checked here [`Hyprland-Dots`](https://github.com/AdriUMA/dotfiles) . During installation, if you opt to copy pre-configured dots, it will be downloaded from that centralized repo.
+- This Repo does not contain Hyprland Dots or configs! Dotfiles can be checked [`here`](https://github.com/AdriUMA/dotfiles) . During installation, if you opt to copy pre-configured dots, it will be downloaded from that centralized repo.
 - Since the Hyprland-Dots are evolving, some of the screenshots maybe old
 
 > [!IMPORTANT]
@@ -16,12 +16,12 @@
 
 #### 🆕 Prerequisites
 
-- This install script is intended for atleast Server type / Minimal Arch Linux installed.
+- This install script is intended for at least Server type / Minimal Arch Linux installed.
 
 > [!NOTE]
 > 🔘 Pipewire and Pipewire audio
 
-- This script will install pipewire and will also disable or will uninstall pulseaudio. If you dont want it, edit install.sh, about line 191 and comment the line `execute_script "pipewire.sh"` or you can simply just delete pipewire.sh in install-scripts directory before installing.
+- This script will install pipewire and will also disable or will uninstall pulseaudio.
 
 #### 👀 NVidia GPU Owners.
 
@@ -39,8 +39,8 @@
 - clone this repo (latest commit only) to reduce file size download by using git. Change directory, make executable and run the script
 
 ```bash
-git clone --depth=1 https://github.com/AdriUMA/Hyprland-Install.git ~/Arch-Hyprland
-cd ~/Hyprland-Install
+git clone --depth=1 https://github.com/AdriUMA/Arch-Hyprland.git ~/Arch-Hyprland
+cd ~/Arch-Hyprland
 chmod +x install.sh
 ./install.sh
 ```
@@ -54,11 +54,11 @@ chmod +x install.sh
 ./install.sh --preset presets/your_preset.sh
 ```
 
-#### ✨ ZSH Themes
+### ✨ ZSH Themes
 
 - To easy-change the theme, `SUPER SHIFT O` , choose desired theme, and close and open terminal.
 
-#### ✨ Keybinds
+### ✨ Keybinds
 
 - SUPER H for HINT!
 - Searchable keybind function via rofi whit SUPER SHIFT K!
