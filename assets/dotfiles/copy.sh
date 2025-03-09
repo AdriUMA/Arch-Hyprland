@@ -412,6 +412,15 @@ fi
 # initialize wallust to avoid config error on hyprland
 wallust run -s $wallpaper 2>&1 | tee -a "$LOG"
 
+if ! lspci | grep -i "nvidia" &> /dev/null; then
+    printf "\n"
+    printf "${INFO} ${YELLOW}NVIDIA GPU${RESET} not detected in your system \n"
+    printf "${NOTE} Script will ${YELLOW}remove${RESET} nvidia envs from Hyprland dots \n"
+    sed -i 's/env = NVD_BACKEND,direct/#env = NVD_BACKEND,direct  #Commented by install script (no nvidia card install-mode)/g' "$HOME/.config/hypr/configs/ENVariables.conf"
+    sed -i 's/env = __GLX_VENDOR_LIBRARY_NAME,nvidia/#env = __GLX_VENDOR_LIBRARY_NAME,nvidia  #Commented by install script (no nvidia card install-mode)/g' "$HOME/.config/hypr/configs/ENVariables.conf"
+    sed -i 's/env = LIBVA_DRIVER_NAME,nvidia /#env = LIBVA_DRIVER_NAME,nvidia  #Commented by install script (no nvidia card install-mode)/g' "$HOME/.config/hypr/configs/ENVariables.conf"
+fi
+
 printf "\n%.0s" {1..2}
 printf "${OK} GREAT! Adri's dotfiles is now Loaded & Ready !!! "
 printf "\n%.0s" {1..1}
