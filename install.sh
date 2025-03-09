@@ -199,24 +199,6 @@ printf "\n"
 ask_yes_no "-Do you want to configure ${YELLOW}Bluetooth${RESET}?" bluetooth
 
 printf "\n"
-ask_yes_no "-Do you want to install ${YELLOW}Thunar file manager${RESET}?" thunar
-
-if [[ "$thunar" == "Y" ]]; then
-    ask_yes_no "-Set ${YELLOW}Thunar${RESET} as the default file manager?" thunar_default
-fi
-
-# Input group
-printf "\n"
-if ! groups "$(whoami)" | grep -q '\binput\b'; then
-    printf "${NOTE} adding to ${YELLOW}input${RESET} group might be necessary for ${YELLOW}waybar keyboard-state functionality${RESET} \n"
-    ask_yes_no "-Would you like to be added to the ${YELLOW}input${RESET} group?" input_group
-fi
-
-printf "\n"
-printf "${NOTE} ${YELLOW}AGS Desktop Overview DEMO link${RESET} on README\n"
-ask_yes_no "-Install ${YELLOW}AGS (aylur's GTK shell) v1${RESET} for Desktop-Like Overview?" ags
-
-printf "\n"
 ask_yes_no "-Install & configure ${YELLOW}SDDM${RESET} as login manager?" sddm
 # check if any known login managers are active when users choose to install sddm
 if [ "$sddm" == "y" ] || [ "$sddm" == "Y" ]; then
@@ -236,12 +218,6 @@ fi
 if [[ "$sddm" == "Y" ]]; then
     ask_yes_no "-Download and Install ${YELLOW}SDDM Theme?${RESET} " sddm_theme
 fi
-
-printf "\n"
-ask_yes_no "-Install ${YELLOW}XDG-DESKTOP-PORTAL-HYPRLAND?${RESET} (For proper Screen Share, e.g., OBS)" xdph
-
-printf "\n"
-ask_yes_no "-Install ${YELLOW}zsh${RESET} with ${YELLOW}oh-my-zsh?${RESET}" zsh
 
 printf "\n"
 ask_yes_no "-Installing on ${YELLOW}Asus ROG laptops?${RESET}" rog
@@ -291,16 +267,9 @@ if [ "$bluetooth" == "Y" ]; then
     execute_script "bluetooth.sh"
 fi
 
-if [ "$thunar" == "Y" ]; then
-    execute_script "thunar.sh"
-fi
-if [ "$thunar_default" == "Y" ]; then
-    execute_script "thunar_default.sh"
-fi
+execute_script "thunar.sh"
 
-if [ "$ags" == "Y" ]; then
-    execute_script "ags.sh"
-fi
+execute_script "ags.sh"
 
 if [ "$sddm" == "Y" ]; then
     execute_script "sddm.sh"
@@ -309,17 +278,11 @@ if [ "$sddm_theme" == "Y" ]; then
     execute_script "sddm_theme.sh"
 fi
 
-if [ "$xdph" == "Y" ]; then
-    execute_script "xdph.sh"
-fi
+execute_script "xdph.sh"
 
-if [ "$zsh" == "Y" ]; then
-    execute_script "zsh.sh"
-fi
+execute_script "zsh.sh"
 
-if [ "$input_group" == "Y" ]; then
-    execute_script "InputGroup.sh"
-fi
+execute_script "InputGroup.sh"
 
 if [ "$rog" == "Y" ]; then
     execute_script "rog.sh"
