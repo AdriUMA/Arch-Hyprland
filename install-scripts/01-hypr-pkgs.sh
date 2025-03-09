@@ -15,7 +15,6 @@ Extra=(
 hypr_package=( 
   #aylurs-gtk-shell
   bc
-  cliphist
   curl 
   grim 
   gvfs 

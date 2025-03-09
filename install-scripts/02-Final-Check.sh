@@ -3,7 +3,6 @@
 # NOTE: These package check are only the essentials
 
 packages=(
-  cliphist
   kvantum
   rofi-wayland
   imagemagick
