@@ -13,7 +13,7 @@
 
 #### 🆕 Prerequisites
 
-- This install script is intended for at least Server type / [Minimal Arch Linux](https://github.com/AdriUMA/Arch-Hyprland/README.arch.md) installed.
+- This install script is intended for at least Server type / [Minimal Arch Linux](https://github.com/AdriUMA/Arch-Hyprland/blob/main/README.arch.md) installed.
 
 > [!NOTE]
 > 🔘 Pipewire and Pipewire audio
@@ -62,4 +62,4 @@ chmod +x install.sh
 
 #### ⏩ Thanks and Credits!
 
-- [`Hyprland`](https://hyprland.org/) | [`JaKooLit Hyprland`](https://github.com/JaKooLit/Arch-Hyprland) | [`JaKooLit Dotfiles`](https://github.com/JaKooLit/Hyprland-Dots)
+- [`Hyprland`](https://hyprland.org/) | [`JaKooLit Hyprland`](https://github.com/JaKooLit/Arch-Hyprland)
