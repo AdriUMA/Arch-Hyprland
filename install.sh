@@ -34,7 +34,7 @@ if [[ "$1" == "--preset" ]]; then
         exit 1
     fi
     
-    source ./preset.sh
+    source "$2"
 fi
 
 # Check if PulseAudio package is installed
