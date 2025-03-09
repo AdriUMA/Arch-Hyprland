@@ -39,7 +39,7 @@ fi
 
 # Check if PulseAudio package is installed
 if pacman -Qq | grep -qw '^pulseaudio$'; then
-    echo "$ERROR PulseAudio is detected as installed. Uninstall it first or edit install.sh (execute_script 'pipewire.sh')."
+    echo "$ERROR PulseAudio is detected as installed. Uninstall it first."
     printf "\n%.0s" {1..2} 
     exit 1
 fi
