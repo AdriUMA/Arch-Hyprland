@@ -9,6 +9,7 @@
 Extra=(
   bat
   tree
+  code
 )
 
 hypr_package=( 
