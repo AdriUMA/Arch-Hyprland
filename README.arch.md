@@ -17,10 +17,21 @@
 [Download ISO](https://archlinux.org/download/) of Arch Linux and [flash](https://www.balena.io/etcher) an external drive.
 Connect the device via Ethernet and boot the live system from the bootable drive.
 
+### Installation
+
 (Optional) Configure the keyboard layout.
 
 ```sh
 loadkeys es
+```
+
+Wifi (Skip this if you are using ethernet)
+
+```sh
+rfkill unblock all
+iwctl device list
+iwctl device DEVICE-NAME set-property Powered on
+iwctl station DEVICE-NAME  connect-hidden "WIFI_SSID" --passphrase "WIFI_PASS"
 ```
 
 We check if we have an internet connection.
