@@ -141,10 +141,10 @@ if [ -d "$DIRPATHw" ]; then
     echo -e "${NOTE} - Backed up $DIRW to $DIRPATHw-backup-$BACKUP_DIR." 2>&1 | tee -a "$LOG"
     
     # Remove the old $DIRPATHw and copy the new one
-    rm -rf "$DIRPATHw" && cp -r "config/$DIRW" "$DIRPATHw" 2>&1 | tee -a "$LOG"
+    rm -rf "$DIRPATHw" && cp -r ".config/$DIRW" "$DIRPATHw" 2>&1 | tee -a "$LOG"
     
     # Step 1: Handle waybar symlinks 
-    for file in "config" "style.css"; do
+    for file in ".config" "style.css"; do
         symlink="$DIRPATHw-backup-$BACKUP_DIR/$file"
         target_file="$DIRPATHw/$file"
         
@@ -213,7 +213,7 @@ if [ -d "$DIRPATHw" ]; then
         cp -f "$BACKUP_FILEw" "$DIRPATHw/UserModules"
     fi
 else
-    cp -r "config/$DIRW" "$DIRPATHw" 2>&1 | tee -a "$LOG"
+    cp -r ".config/$DIRW" "$DIRPATHw" 2>&1 | tee -a "$LOG"
     echo -e "${OK} - Copy completed for ${YELLOW}$DIRW${RESET}" 2>&1 | tee -a "$LOG"
 fi
 
@@ -240,8 +240,8 @@ for DIR_NAME in $DIR; do
   fi
   
   # Copy the new config
-  if [ -d "config/$DIR_NAME" ]; then
-    cp -r "config/$DIR_NAME/" "$HOME/.config/$DIR_NAME" 2>&1 | tee -a "$LOG"
+  if [ -d ".config/$DIR_NAME" ]; then
+    cp -r ".config/$DIR_NAME/" "$HOME/.config/$DIR_NAME" 2>&1 | tee -a "$LOG"
     if [ $? -eq 0 ]; then
       echo "${OK} - Copy of config for ${YELLOW}$DIR_NAME${RESET} completed!"
     else
@@ -249,7 +249,7 @@ for DIR_NAME in $DIR; do
       exit 1
     fi
   else
-    echo "${ERROR} - Directory config/$DIR_NAME does not exist to copy."
+    echo "${ERROR} - Directory .config/$DIR_NAME does not exist to copy."
   fi
 done
 
@@ -292,7 +292,7 @@ if [ -d "$sddm_sequioa" ]; then
     case $SDDM_WALL in
       [Yy])
         # Copy the wallpaper, ignore errors if the file exists or fails
-        sudo cp -r "config/hypr/wallpaper_effects/.wallpaper_current" "/usr/share/sddm/themes/sequoia_2/backgrounds/default" || true
+        sudo cp -r ".config/hypr/wallpaper_effects/.wallpaper_current" "/usr/share/sddm/themes/sequoia_2/backgrounds/default" || true
         echo "${NOTE} Current wallpaper applied as default SDDM background" 2>&1 | tee -a "$LOG"
         break
         ;;
