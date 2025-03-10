@@ -9,7 +9,7 @@
 Extra=(
   bat
   tree
-  code
+  visual-studio-code-bin
 )
 
 hypr_package=( 
