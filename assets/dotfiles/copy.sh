@@ -276,9 +276,6 @@ printf "\n%.0s" {1..1}
  
 # Set some files as executable
 chmod +x "$HOME/.config/hypr/scripts/"* 2>&1 | tee -a "$LOG"
-chmod +x "$HOME/.config/hypr/UserScripts/"* 2>&1 | tee -a "$LOG"
-# Set executable for initial-boot.sh
-chmod +x "$HOME/.config/hypr/initial-boot.sh" 2>&1 | tee -a "$LOG"
 
 # for SDDM (sequoia_2)
 sddm_sequioa="/usr/share/sddm/themes/sequoia_2"
