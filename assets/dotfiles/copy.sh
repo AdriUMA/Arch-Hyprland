@@ -77,22 +77,13 @@ LOG="Copy-Logs/install-$(date +%d-%H%M%S)_dotfiles.log"
 # update home folders
 xdg-user-dirs-update 2>&1 | tee -a "$LOG" || true
 
-# setting up for nvidia
-if lspci -k | grep -A 2 -E "(VGA|3D)" | grep -iq nvidia; then
-  echo "${INFO} Nvidia GPU detected. Setting up proper env's and configs" 2>&1 | tee -a "$LOG" || true
-  sed -i '/env = LIBVA_DRIVER_NAME,nvidia/s/^#//' config/hypr/UserConfigs/ENVariables.conf
-  sed -i '/env = __GLX_VENDOR_LIBRARY_NAME,nvidia/s/^#//' config/hypr/UserConfigs/ENVariables.conf
-  sed -i '/env = NVD_BACKEND,direct/s/^#//' config/hypr/UserConfigs/ENVariables.conf
-  sed -i 's/^\([[:space:]]*no_hardware_cursors[[:space:]]*=[[:space:]]*\)false/\1true/' config/hypr/UserConfigs/UserSettings.conf  
-fi
-
 # uncommenting WLR_RENDERER_ALLOW_SOFTWARE,1 if running in a VM is detected
 if hostnamectl | grep -q 'Chassis: vm'; then
   echo "${INFO} System is running in a virtual machine. Setting up proper env's and configs" 2>&1 | tee -a "$LOG" || true
   # enabling proper ENV's for Virtual Environment which should help
-  sed -i 's/^\([[:space:]]*no_hardware_cursors[[:space:]]*=[[:space:]]*\)false/\1true/' config/hypr/UserConfigs/UserSettings.conf
-  sed -i '/env = WLR_RENDERER_ALLOW_SOFTWARE,1/s/^#//' config/hypr/UserConfigs/ENVariables.conf
-  #sed -i '/env = LIBGL_ALWAYS_SOFTWARE,1/s/^#//' config/hypr/UserConfigs/ENVariables.conf
+  sed -i 's/^\([[:space:]]*no_hardware_cursors[[:space:]]*=[[:space:]]*\)false/\1true/' config/hypr/configs/UserSettings.conf
+  sed -i '/env = WLR_RENDERER_ALLOW_SOFTWARE,1/s/^#//' config/hypr/configs/ENVariables.conf
+  #sed -i '/env = LIBGL_ALWAYS_SOFTWARE,1/s/^#//' config/hypr/configs/ENVariables.conf
   sed -i '/monitor = Virtual-1, 1920x1080@60,auto,1/s/^#//' config/hypr/monitors.conf
 fi
 
@@ -103,11 +94,11 @@ printf "\n%.0s" {1..1}
 #   $2: autostart app
 startup_setter() {
     if command -v "$1" >/dev/null 2>&1; then
-        if grep -q "$2" config/hypr/UserConfigs/Startup_Apps.conf; then
+        if grep -q "$2" config/hypr/configs/Startup_Apps.conf; then
             echo "${WARN} $2 detected on Startup_Apps.conf. Configure manually this settings."
         else
-            echo "" >> config/hypr/UserConfigs/Startup_Apps.conf
-            echo "exec-once = $2 & # Autocreated by Adri's dotfiles script" >> config/hypr/UserConfigs/Startup_Apps.conf
+            echo "" >> config/hypr/configs/Startup_Apps.conf
+            echo "exec-once = $2 & # Autocreated by Adri's dotfiles script" >> config/hypr/configs/Startup_Apps.conf
             echo "${INFO} $1 detected and auto configured $2 on start up."
         fi
     fi
