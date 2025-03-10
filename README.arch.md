@@ -93,7 +93,8 @@ Vemos los nuevos `/dev/sdXY` que se nos han creado
 
 **BIOS/MBR same disk with Windows**
 
-> [!WARNING] On BIOS/MBR systems, only 4 primary volumes can be created. Since Windows occupies 3, we cannot have swap or separate home from root.
+> [!WARNING]
+>  On BIOS/MBR systems, only 4 primary volumes can be created. Since Windows occupies 3, we cannot have swap or separate home from root.
 
 | Path | Bootable | Type  | Suggested Size |
 | ---- | -------- | ----- | -------------- |
