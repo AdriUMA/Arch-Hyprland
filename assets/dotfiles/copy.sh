@@ -400,6 +400,8 @@ fi
 # initialize wallust to avoid config error on hyprland
 wallust run -s $wallpaper 2>&1 | tee -a "$LOG"
 
+sleep 1
+
 if ! lspci | grep -i "nvidia" &> /dev/null; then
     printf "\n"
     printf "${INFO} ${YELLOW}NVIDIA GPU${RESET} not detected in your system \n"
