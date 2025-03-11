@@ -45,21 +45,6 @@ if pacman -Qq | grep -qw '^pulseaudio$'; then
     exit 1
 fi
 
-# Check if base-devel is installed
-if pacman -Q base-devel &> /dev/null; then
-    echo "base-devel is already installed."
-else
-    echo "$NOTE Install base-devel.........."
-
-    if sudo pacman -S --noconfirm base-devel; then
-        echo "$OK base-devel has been installed successfully."
-    else
-        echo "$ERROR base-devel not found nor cannot be installed."
-        echo "$ACTION Please install base-devel manually before running this script... Exiting"
-        exit 1
-    fi
-fi
-
 clear
 
 printf "\n%.0s" {1..2}  
@@ -90,6 +75,22 @@ if [ "$proceed" != "y" ]; then
 fi
 
 printf "\n%.0s" {1..1}
+
+# Check if base-devel is installed
+if pacman -Q base-devel &> /dev/null; then
+    echo "base-devel is already installed."
+else
+    echo "$NOTE Install base-devel.........."
+
+    if sudo pacman -S --noconfirm base-devel; then
+        echo "$OK base-devel has been installed successfully."
+    else
+        echo "$ERROR base-devel not found nor cannot be installed."
+        echo "$ACTION Please install base-devel manually before running this script... Exiting"
+        exit 1
+    fi
+    printf "\n%.0s" {1..1}
+fi
 
 # install pciutils if detected not installed. Necessary for detecting GPU
 if ! pacman -Qs pciutils > /dev/null; then

@@ -14,6 +14,7 @@ Extra=(
 
 hypr_package=( 
   #aylurs-gtk-shell
+  wallust 
   bc
   curl 
   grim 
@@ -42,7 +43,6 @@ hypr_package=(
   swaync 
   swww
   unzip # needed later
-  wallust 
   waybar
   wget
   wl-clipboard
