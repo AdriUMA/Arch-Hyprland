@@ -50,12 +50,12 @@ chmod +x install.sh
 
 ### ✨ ZSH Themes
 
-- To easy-change the theme, `SUPER SHIFT O` , choose desired theme, and close and open terminal.
+- To easy-change the theme, `SUPER SHIFT ENTER` , choose desired theme, and close and open terminal.
 
 ### ✨ Keybinds
 
 - SUPER H for HINT!
-- Searchable keybind function via rofi whit SUPER SHIFT K!
+- Searchable keybind function via rofi whit SUPER SHIFT H!
 
 #### ⏩ Thanks and Credits!
 
