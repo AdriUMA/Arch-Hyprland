@@ -226,7 +226,7 @@ printf "\n"
 ask_yes_no "-Installing on ${YELLOW}Asus ROG laptops?${RESET}" rog
 
 printf "\n"
-ask_yes_no "-Do you want to add pre-configured ${YELLOW}KooL's Hyprland dotfiles?${RESET}" dots
+ask_yes_no "-Do you want to add pre-configured ${YELLOW}Adri's Hyprland dotfiles?${RESET}" dots
 
 printf "\n"
 
@@ -311,7 +311,7 @@ if pacman -Q hyprland &> /dev/null; then
     sleep 2
     printf "\n%.0s" {1..2}
 
-    printf "${SKY_BLUE}Thank you${RESET} for using ${MAGENTA}KooL's Hyprland Dots${RESET}. ${YELLOW}Enjoy and Have a good day!${RESET}"
+    printf "${SKY_BLUE}Thank you${RESET} for using ${MAGENTA}Adri's Hyprland Dots${RESET}. ${YELLOW}Enjoy and Have a good day!${RESET}"
     printf "\n%.0s" {1..2}
 
     printf "\n${NOTE} You can start Hyprland by typing ${SKY_BLUE}Hyprland${RESET} (IF SDDM is not installed) (note the capital H!).\n"
