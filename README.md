@@ -33,8 +33,8 @@
 - clone this repo (latest commit only) to reduce file size download by using git. Change directory, make executable and run the script
 
 ```bash
-git clone --depth=1 https://github.com/AdriUMA/Arch-Hyprland.git ~/Arch-Hyprland
-cd ~/Arch-Hyprland
+git clone --depth=1 https://github.com/AdriUMA/Hyprland-Install.git ~/Hyprland-Install
+cd ~/Hyprland-Install
 chmod +x install.sh
 ./install.sh
 ```
