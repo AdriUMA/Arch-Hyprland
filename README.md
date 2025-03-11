@@ -10,7 +10,7 @@
 
 #### 🆕 Prerequisites
 
-- This install script is intended for [rch Linux](https://archlinux.org/) installed. **Don't** you have [Arch Linux](https://archlinux.org/)? Check out this [semi-automatic installation script](https://github.com/AdriUMA/Arch-Install).
+- This install script is intended for [Arch Linux](https://archlinux.org/) installed. Check out this [semi-automatic installation script](https://github.com/AdriUMA/Arch-Install).
 
 > [!NOTE]
 > 🔘 Pipewire and Pipewire audio
