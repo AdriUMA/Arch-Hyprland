@@ -1,4 +1,4 @@
-# ** Hyprland Install Script **
+# Hyprland Install Script 💦
 
 - This Repo does not contain Hyprland Dots or configs! Dotfiles can be checked [`here`](https://github.com/AdriUMA/dotfiles) . During installation, if you opt to copy pre-configured dots, it will be downloaded from that centralized repo.
 
@@ -10,14 +10,14 @@
 
 #### 🆕 Prerequisites
 
-- This install script is intended for at least Server type / [Minimal Arch Linux](https://github.com/AdriUMA/Arch-Hyprland/blob/main/README.arch.md) installed.
+- This install script is intended for [rch Linux](https://archlinux.org/) installed. **Don't** you have [Arch Linux](https://archlinux.org/)? Check out this [semi-automatic installation script](https://github.com/AdriUMA/Arch-Install).
 
 > [!NOTE]
 > 🔘 Pipewire and Pipewire audio
 
 - This script will install pipewire and will also disable or will uninstall pulseaudio.
 
-#### 👀 NVidia GPU Owners.
+#### 👀 NVidia GPU Owners
 
 - By default, nvidia-dkms will be installed. and only supports GTX 900 and newer. If required to install older driver, edit the nvidia.sh in install-scripts directory
 

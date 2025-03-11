@@ -34,6 +34,7 @@ if [[ "$1" == "--preset" ]]; then
         exit 1
     fi
     
+    use_preset = "$2"
     source "$2"
 fi
 
@@ -160,6 +161,7 @@ ask_custom_option() {
         fi
     done
 }
+
 # Function to execute a script if it exists and make it executable
 execute_script() {
     local script="$1"
@@ -192,7 +194,7 @@ fi
 # AUR helper
 if ! command -v yay &>/dev/null && ! command -v paru &>/dev/null; then
     printf "\n"
-    ask_custom_option "-Which ${YELLOW}AUR helper${RESET} would you like to use? (paru or yay): " "paru or yay" aur_helper
+    ask_custom_option "-Which ${YELLOW}AUR helper${RESET} would you like to use? (paru or yay): " "paru yay" aur_helper
 fi
 
 printf "\n"
