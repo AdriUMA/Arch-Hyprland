@@ -10,6 +10,10 @@ Extra=(
   bat
   tree
   visual-studio-code-bin
+  firefox
+  discord
+  whatsapp-for-linux
+  spotify
 )
 
 hypr_package=( 
