@@ -297,6 +297,8 @@ if [ "$dots" == "Y" ]; then
     execute_script "dotfiles-main.sh"
 fi
 
+execute_script "swww.sh"
+
 clear
 
 # final check essential packages if it is installed
