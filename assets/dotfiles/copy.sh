@@ -130,7 +130,7 @@ fi
 
 printf "${INFO} - copying ${SKY_BLUE}dotfiles${RESET}\n"
 
-# for waybar special part since it contains symlink
+### for waybar special part since it contains symlink
 DIRW="waybar"
 DIRPATHw="$HOME/.config/$DIRW"
 if [ -d "$DIRPATHw" ]; then
@@ -219,7 +219,7 @@ fi
 
 printf "\n%.0s" {1..1}
 
-# Else config
+### Else .config folders
 DIR="ags fastfetch kitty rofi swaync btop cava hypr Kvantum qt5ct qt6ct swappy wallust wlogout"
 for DIR_NAME in $DIR; do
   DIRPATH="$HOME/.config/$DIR_NAME"
@@ -255,7 +255,7 @@ done
 
 printf "\n%.0s" {1..1}
 
-# Define the target directory for rofi themes
+### Define the target directory for rofi themes
 rofi_DIR="$HOME/.local/share/rofi/themes"
 
 if [ ! -d "$rofi_DIR" ]; then
@@ -277,7 +277,35 @@ printf "\n%.0s" {1..1}
 # Set some files as executable
 chmod +x "$HOME/.config/hypr/scripts/"* 2>&1 | tee -a "$LOG"
 
-# for SDDM (sequoia_2)
+### get all root elements
+# List of elements to be ignored
+IGNORE=(".gitignore" "README.md" "copy.sh")
+
+# Variable to store elements that are not directories and not in the ignore list
+ELEMENTS=""
+
+# Loop through all elements in the directory
+for element in ./*; do
+    # Check if it's a element and not a directory
+    if [ -f "$element" ]; then
+        # Check if the element is not in the ignore list
+        if [[ ! " ${IGNORE[@]} " =~ " $(basename "$element") " ]]; then
+            # Add the element to the ELEMENTS variable
+            ELEMENTS+="$element"$'\n'
+        fi
+    fi
+done
+
+# Loop through the ELEMENTS variable
+IFS=$'\n' # Set the delimiter for the ELEMENTS variable
+for e in $ELEMENTS; do
+    # Copy the element to the destination directory
+    cp "$e" "$HOME" 2>&1 | tee -a "$LOG"
+    echo "${OK} - Copy of config for ${YELLOW}$e${RESET} completed!"
+    # Here you can do whatever you want with each element
+done
+
+### for SDDM (sequoia_2)
 sddm_sequioa="/usr/share/sddm/themes/sequoia_2"
 if [ -d "$sddm_sequioa" ]; then
   while true; do
